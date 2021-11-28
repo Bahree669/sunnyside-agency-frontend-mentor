@@ -13,7 +13,7 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
     -   [What I learned](#what-i-learned)
 -   [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+<br>
 
 ## Overview
 
@@ -24,18 +24,24 @@ Users should be able to:
 -   View the optimal layout for the site depending on their device's screen size
 -   See hover states for all interactive elements on the page
 
+<br>
+
 ### Screenshot
 
 Here are the screenshoot, you also can see the live version in the link section bellow 👇
 
 <br>
 
-![](./sunnyside.jpg)
+![](./sunnyside.png)
+
+<br>
 
 ### Links
 
 -   Solution URL: [Add solution URL here](https://your-solution-url.com)
 -   Live Site URL: [Add live site URL here](https://bahree669.github.io/sunnyside-agency-frontend-mentor/)
+
+<br>
 
 ## My process
 
@@ -48,11 +54,15 @@ Here are the screenshoot, you also can see the live version in the link section 
 -   Mobile-first workflow
 -   JavaScript 💛
 
+<br>
+
 ### What I learned
 
 This challenge strengthen my CSS grid and CSS background skill. I learn a lot about the background property, how to make the background fit perfectly to the container, how to positioning it and a lot more. 😁
 
+<br>
+
 ## Author
 
 -   Frontend Mentor - [@Bahree669](https://www.frontendmentor.io/profile/Bahree669)
--   Twitter - [@Bahree69](https://www.twitter.com/Bahree69)
+-   Twitter - [@Bahree69](https://www.twitter.com/Bahree69) 😊😁
