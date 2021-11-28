@@ -32,7 +32,7 @@ Here are the screenshoot, you also can see the live version in the link section 
 
 <br>
 
-![](./sunnyside.png)
+![](../sunnyside.png)
 
 <br>
 
