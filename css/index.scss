@@ -1,0 +1,702 @@
+// put the google font here
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap");
+// FONTS
+$body-font: "Barlow";
+$title-font: "Fraunces";
+
+// CHALLENGE BY FRONTEND MENTOR, CODED BY SAEPUL BAHRI
+
+// COLORS
+
+// Primary Color
+$primary-color: (
+    Soft-red: hsl(7, 99%, 70%),
+    Yellow-color: hsl(51, 100%, 49%),
+    Dark-desaturated-cyan: hsl(167, 40%, 24%),
+    Dark-blue: hsl(198, 62%, 26%),
+    Dark-moderate-cyan: hsl(168, 34%, 41%),
+);
+
+// make a function that return the primary color when invoked
+@function primary-color($name) {
+    @return map-get($primary-color, $name);
+}
+
+// Neutral Color
+
+$neutral-color: (
+    Very-dark-desaturated-blue: hsl(212, 27%, 19%),
+    Very-dark-grayish-blue: hsl(213, 9%, 39%),
+    Dark-grayish-blue: hsl(232, 10%, 55%),
+    Grayish-blue: hsl(210, 4%, 67%),
+    White: hsl(0, 0%, 100%),
+);
+
+// make a function that will return the neutral color when invoked
+@function neutral-color($name) {
+    @return map-get($neutral-color, $name);
+}
+
+// THE MEDIA QUERIES FOR THE LAYOUT
+// Mobile width is 375px
+// Dekstop width is 1440px
+@mixin mobile-big {
+    @media screen and (min-width: 360px) {
+        @content;
+    }
+}
+
+@mixin mobile-bigger {
+    @media screen and (min-width: 370px) {
+        @content;
+    }
+}
+
+@mixin dekstop-site {
+    @media screen and (min-width: 1200px) {
+        @content;
+    }
+}
+
+// MAKE THE SHARED PROPERTY
+
+%paragraph {
+    font-size: 18px;
+    font-family: $body-font, sans-serif;
+    font-weight: 600;
+}
+
+%title {
+    font-family: $title-font, sans-serif;
+    font-size: 3.5rem;
+    text-align: center;
+
+    color: neutral-color(Very-dark-desaturated-blue);
+}
+
+%about-buttons {
+    position: relative;
+    font-family: $title-font, sans-serif;
+    color: neutral-color(Very-dark-desaturated-blue);
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+%about-decoration {
+    background: url("../images/mobile/image-transform.jpg");
+    height: 280px;
+
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+%about-text {
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+
+    padding: 1em 1em 3.5em 1em;
+    margin: 0;
+}
+
+// LET THE WAR BEGIN!!! ^0^
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    background: #3ebfff;
+
+    padding: 0.5em 1em;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    @include dekstop-site() {
+        padding: 1em 1.5em;
+    }
+
+    .logo {
+        @extend %paragraph;
+        color: neutral-color(White);
+        font-size: 18px;
+        font-weight: bold;
+
+        text-transform: lowercase;
+    }
+
+    #menu-toggle {
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+        padding: 10px;
+
+        @include dekstop-site() {
+            display: none;
+        }
+    }
+
+    #menu-toggle.open-nav {
+        opacity: 0.7;
+    }
+
+    .menu-bar {
+        height: 1.5px;
+        width: 1.5em;
+        position: relative;
+
+        background: neutral-color(White);
+    }
+
+    .menu-bar::after,
+    .menu-bar::before {
+        content: "";
+        position: absolute;
+
+        background: neutral-color(White);
+
+        height: 1.5px;
+        width: 1.5em;
+    }
+
+    .menu-bar::after {
+        transform: translateY(-7px);
+    }
+
+    .menu-bar::before {
+        transform: translateY(7px);
+    }
+
+    #navbar {
+        position: absolute;
+        top: 7em;
+
+        width: 90%;
+        padding: 2em;
+        margin: 0 auto;
+
+        background: neutral-color(white);
+        display: none;
+        place-content: center;
+        gap: 2em;
+
+        text-align: center;
+        z-index: 1000;
+
+        @include dekstop-site() {
+            display: flex;
+            position: static;
+            padding: 0;
+            background: none;
+            width: auto;
+            height: auto;
+
+            margin: 0;
+        }
+    }
+
+    #navbar.open-nav {
+        display: grid;
+    }
+
+    #navbar ul {
+        width: 100%;
+
+        display: grid;
+        gap: 3em;
+
+        padding: 0;
+
+        position: relative;
+
+        @include dekstop-site() {
+            display: flex;
+        }
+    }
+
+    #navbar::after {
+        content: "";
+        position: absolute;
+        top: -5%;
+        right: 0;
+
+        background-color: neutral-color(White);
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        clip-path: 0% 50%;
+
+        height: 2em;
+        width: 2em;
+
+        @include dekstop-site() {
+            display: none;
+        }
+    }
+
+    .nav-item {
+        @extend %paragraph;
+        color: neutral-color(Grayish-blue);
+
+        @include dekstop-site() {
+            color: neutral-color(White);
+        }
+    }
+
+    .yellow-btn {
+        background: primary-color(Yellow-color);
+        color: neutral-color(Very-dark-desaturated-blue);
+        font-family: $title-font;
+        text-transform: uppercase;
+
+        padding: 1em 1.5em;
+        border-radius: 20em;
+
+        @include dekstop-site() {
+            background: neutral-color(White);
+            color: neutral-color(Very-dark-desaturated-blue);
+        }
+    }
+}
+
+#hero-section {
+    display: grid;
+    place-content: center;
+
+    height: 460px;
+
+    background: url("../images/mobile/image-header.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    @include mobile-big() {
+        height: 500px;
+    }
+
+    @include mobile-bigger() {
+        height: 545px;
+    }
+
+    @include dekstop-site() {
+        background: url("../images/desktop/image-header.jpg");
+        height: 700px;
+        background-size: 100%;
+    }
+
+    #tagline {
+        @extend %title;
+        color: neutral-color(White);
+
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: 10px;
+        text-transform: uppercase;
+
+        @include dekstop-site() {
+            font-size: 3rem;
+        }
+    }
+
+    .hero-arrow-down {
+        background: url("../images/icon-arrow-down.svg");
+        min-height: 120px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        margin-bottom: clamp(5em, 7em, 8.5em);
+    }
+}
+
+#about {
+    text-align: center;
+    transform: translateY(-10px);
+    margin: 0;
+
+    @include dekstop-site() {
+        transform: translateY(0);
+
+        .left-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 500px;
+        }
+
+        .right-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 500px;
+        }
+    }
+
+    .text-column {
+        @extend %about-text;
+
+        @include dekstop-site() {
+            text-align: left;
+            justify-content: center;
+            padding: 0 6em;
+            padding-bottom: 5em;
+        }
+    }
+
+    .title {
+        @extend %title;
+        font-size: 2.3rem;
+
+        @include dekstop-site() {
+            text-align: left;
+        }
+    }
+
+    .paragraph {
+        @extend %paragraph;
+        color: neutral-color(Grayish-blue);
+    }
+
+    .learn-more-btn {
+        @extend %about-buttons;
+        z-index: 20;
+    }
+
+    .learn-more-btn::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.8em;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+
+        height: 0.8em;
+        width: 8em;
+
+        background: primary-color(Yellow-color);
+        border-radius: 20em;
+        opacity: 0.2;
+
+        @include dekstop-site() {
+            left: -0.5em;
+            top: 0.7em;
+            transform: translate(0, 0);
+        }
+    }
+
+    .pink-btn::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -0.8em;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+
+        height: 0.8em;
+        width: 8em;
+
+        background: primary-color(Soft-red);
+        border-radius: 20em;
+        opacity: 0.2;
+
+        @include dekstop-site() {
+            left: -0.5em;
+            top: 0.7em;
+            transform: translate(0, 0);
+        }
+    }
+
+    #egg {
+        @extend %about-decoration;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-transform.jpg");
+            height: 500px;
+            background-position: center;
+
+            order: 1;
+        }
+    }
+
+    #pink-glass {
+        @extend %about-decoration;
+        background: url("../images/mobile/image-stand-out.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-stand-out.jpg");
+            height: 500px;
+            background-position: center;
+        }
+    }
+}
+
+#service {
+    text-align: center;
+    margin: 0;
+
+    @include dekstop-site() {
+        article {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 500px;
+        }
+    }
+
+    .column {
+        @extend %about-text;
+        height: 500px;
+
+        @include mobile-bigger() {
+            height: 545px;
+        }
+    }
+
+    .cherry-bg {
+        background: url("../images/mobile/image-graphic-design.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-graphic-design.jpg");
+        }
+
+        .text {
+            transform: translateY(260px);
+
+            @include mobile-bigger() {
+                transform: translateY(300px);
+            }
+
+            h2 {
+                @extend %title;
+                color: primary-color(Dark-desaturated-cyan);
+                font-size: 2rem;
+            }
+
+            p {
+                @extend %paragraph;
+                color: primary-color(Dark-desaturated-cyan);
+            }
+        }
+    }
+
+    .orange-bg {
+        background: url("../images/mobile/image-photography.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-photography.jpg");
+        }
+
+        .text {
+            transform: translateY(260px);
+
+            @include mobile-bigger() {
+                transform: translateY(300px);
+            }
+
+            h2 {
+                @extend %title;
+                color: primary-color(Dark-blue);
+                font-size: 2rem;
+            }
+
+            p {
+                @extend %paragraph;
+                color: primary-color(Dark-blue);
+            }
+        }
+    }
+}
+
+#testimonial-container {
+    text-align: center;
+    margin: 0;
+
+    @include dekstop-site() {
+        padding: 6em 0;
+    }
+
+    article {
+        padding: 4em 0;
+        width: 100%;
+
+        display: grid;
+        gap: 3em;
+
+        @include dekstop-site() {
+            grid-template-columns: repeat(3, 1fr);
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+    h2 {
+        @extend %title;
+        font-size: 1rem;
+        color: neutral-color(Grayish-blue);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+
+        margin-bottom: 2.5em;
+        margin-top: 3em;
+    }
+
+    figure {
+        display: grid;
+        place-content: center;
+        gap: 1em;
+        width: 100%;
+        margin: 0 auto;
+
+        img {
+            border-radius: 50%;
+            width: 4em;
+            height: 4em;
+        }
+
+        blockquote {
+            @extend %paragraph;
+            color: neutral-color(Dark-grayish-blue);
+        }
+
+        figcaption {
+            @extend %title;
+            font-size: 18px;
+        }
+
+        .figure-job {
+            @extend %paragraph;
+            font-size: 16px;
+            color: neutral-color(Grayish-blue);
+        }
+    }
+}
+
+#gallery {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: 150px;
+
+    @include dekstop-site() {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 390px;
+    }
+
+    .image-one {
+        background: url("../images/mobile/image-gallery-milkbottles.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-gallery-milkbottles.jpg");
+            background-size: 100%;
+        }
+    }
+
+    .image-two {
+        background: url("../images/mobile/image-gallery-orange.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-gallery-orange.jpg");
+            background-size: 100%;
+        }
+    }
+    .image-three {
+        background: url("../images/mobile/image-gallery-cone.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-gallery-cone.jpg");
+            background-size: 100%;
+        }
+    }
+    .image-four {
+        background: url("../images/mobile/image-gallery-sugar-cubes.jpg");
+        background-size: 100%;
+
+        @include dekstop-site() {
+            background: url("../images/desktop/image-gallery-sugarcubes.jpg");
+            background-size: 100%;
+        }
+    }
+}
+
+footer {
+    padding: 4em 0;
+    margin: 0;
+    background: primary-color(Dark-moderate-cyan);
+    background: primary-color(Dark-moderate-cyan);
+
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5em;
+
+        text-align: center;
+
+        @include dekstop-site() {
+            width: 50%;
+            margin: 0 auto;
+        }
+    }
+
+    .logo {
+        width: 8em;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        padding: 0 2em;
+
+        li {
+            list-style-type: none;
+        }
+
+        .footer-nav {
+            @extend %paragraph;
+            color: primary-color(Dark-desaturated-cyan);
+            text-transform: capitalize;
+        }
+    }
+
+    .social {
+        width: 70%;
+
+        display: flex;
+        justify-content: space-around;
+
+        .card img {
+            width: 1.3em;
+        }
+    }
+}
+
+// CHALLENGE BY FRONTEND MENTOR, CODED BY SAEPUL BAHRI
