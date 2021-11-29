@@ -58,6 +58,12 @@ $neutral-color: (
     }
 }
 
+@mixin big-monitor {
+    @media screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
 // MAKE THE SHARED PROPERTY
 
 %paragraph {
@@ -139,6 +145,11 @@ header {
 
     @include dekstop-site() {
         padding: 1em 1.5em;
+    }
+
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
     }
 
     .logo {
@@ -306,6 +317,13 @@ header {
         background-size: 100%;
     }
 
+    @include big-monitor() {
+        background-size: 100%;
+        height: 800px;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
     #tagline {
         @extend %title;
         color: neutral-color(White);
@@ -350,6 +368,11 @@ header {
             grid-template-columns: repeat(2, 1fr);
             grid-auto-rows: 500px;
         }
+    }
+
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
     }
 
     .text-column {
@@ -463,6 +486,11 @@ header {
         }
     }
 
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
     .column {
         @extend %about-text;
         height: 500px;
@@ -537,6 +565,11 @@ header {
         padding: 6em 0;
     }
 
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
     article {
         padding: 4em 0;
         width: 100%;
@@ -603,6 +636,11 @@ header {
         grid-auto-rows: 390px;
     }
 
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
     .image-one {
         background: url("../images/mobile/image-gallery-milkbottles.jpg");
         background-size: 100%;
@@ -660,6 +698,11 @@ footer {
             width: 50%;
             margin: 0 auto;
         }
+    }
+
+    @include big-monitor() {
+        max-width: 1440px;
+        margin: 0 auto;
     }
 
     .logo {

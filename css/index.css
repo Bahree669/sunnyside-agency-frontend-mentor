@@ -88,6 +88,13 @@ header {
   }
 }
 
+@media screen and (min-width: 1440px) {
+  header {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
 header .logo {
   color: white;
   font-size: 18px;
@@ -265,6 +272,15 @@ header .yellow-btn {
   }
 }
 
+@media screen and (min-width: 1440px) {
+  #hero-section {
+    background-size: 100%;
+    height: 800px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
 #hero-section #tagline {
   color: white;
   font-size: 2rem;
@@ -313,6 +329,13 @@ header .yellow-btn {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 500px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #about {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
 
@@ -432,6 +455,13 @@ header .yellow-btn {
   }
 }
 
+@media screen and (min-width: 1440px) {
+  #service {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
 #service .column {
   height: 500px;
 }
@@ -517,6 +547,13 @@ header .yellow-btn {
   }
 }
 
+@media screen and (min-width: 1440px) {
+  #testimonial-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
 #testimonial-container article {
   padding: 4em 0;
   width: 100%;
@@ -584,6 +621,13 @@ header .yellow-btn {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 390px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  #gallery {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
 
@@ -660,6 +704,13 @@ footer article {
 @media screen and (min-width: 1200px) {
   footer article {
     width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  footer {
+    max-width: 1440px;
     margin: 0 auto;
   }
 }
